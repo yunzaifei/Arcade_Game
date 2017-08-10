@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Frogger</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="all">
+        <div class="top">
+            <span>选择角色：</span>
+            <img id="imgPlayer" src="./images/char-boy.png" alt="">
+            <select name="" id="selectPlayer" onchange="changePlayer(event)">
+                <option value="boy">
+                    小男孩
+                </option>
+                <option value="cat-girl">
+                    猫女郎
+                </option>
+                <option value="horn-girl">
+                    羊女郎
+                </option>
+                <option value="pink-girl">
+                    粉红女郎
+                </option>
+                <option value="princess-girl">
+                    女王大人
+                </option>
+            </select>
+            <span>得分：</span>
+            <span id="scores">0</span>
+            <img src="./images/Heart.png" alt="">
+            x
+            <span id="hearts">1</span>
+            <span>&nbsp;&nbsp;关卡：</span>
+            <span id="level">1</span>
+            <input type="button" value="重新开始" onclick="replay()">
+        </div>
+        <div id="play">
+            <div id="barContainer">
+                <div id="bar" style="width:100%;"></div>
+            </div>
+        </div>
+        <div class="log">
+            <h3>道具说明：</h3>
+            <p>
+                <img src="./images/Gem Blue.png" alt="">
+                <span>蓝色海洋：前进一格</span>
+                <img src="./images/Gem Green.png" alt="">
+                <span>绿色和平：2秒内不会收到攻击</span>
+            </p>
+            <p>
+                <img src="./images/Gem Orange.png" alt="">
+                <span>橙色风暴：消灭一个敌人</span>
+                <img src="./images/Rock.png" alt="">
+                <span>顽石挡路：玩家无法通过</span>
+            </p>
+            <p>
+                <img src="./images/Heart.png" alt="">
+                <span>大复活术：可以抵消一次攻击</span>
+                <img src="./images/Key.png" alt="">
+                <span>通关钥匙：立即通关</span>
+            </p>
+            <p>
+                <img src="./images/Star.png" alt="">
+                <span>千分之星：得1000分</span>
+            </p>
+        </div>
+    </div>
+    <script src="js/resources.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/engine.js"></script>
+</body>
+<script>
+    function changePlayer(e){
+        document.getElementById('imgPlayer').src = './images/char-'+ e.target.value +'.png';
+        player.changePlayer(e.target.value);
+        document.getElementById('selectPlayer').blur();
+    }
+    function countdown(){
+        document.getElementById('barContainer').style.display = 'block';
+        var progress = document.getElementById('bar');
+        var percent = progress.style.width.slice(0,-1);
+        percent -= 2.5;
+        progress.style.width = percent + '%';
+        setTimeout(function() {
+            if(percent > 0){
+                countdown();
+            }else{
+                document.getElementById('barContainer').style.display = 'none';
+            }
+        }, 50);
+    }
+    function replay(){
+        console.log('ssssssssss');
+        reset(true);
+    }
+</script>
+</html>
