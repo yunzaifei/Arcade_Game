@@ -189,7 +189,8 @@ var Rock = function(){
     this.propType = 'Rock';
     this.sprite = 'images/Rock.png';
 }
-Rock.prototype = new Prop();
+Rock.prototype = Object.create(Prop.prototype);
+Rock.prototype.constructor = Rock;
 //宝石
 var Gem = function(color){
     Prop.call(this);
@@ -204,7 +205,8 @@ var Gem = function(color){
     };
     this.sprite = type_img[color];
 }
-Gem.prototype = new Prop();
+Gem.prototype = Object.create(Prop.prototype);
+Gem.prototype.constructor = Gem;
 //心
 var Heart = function(){
     Prop.call(this);
@@ -212,7 +214,8 @@ var Heart = function(){
     this.propType = 'Heart';
     this.sprite = 'images/Heart.png';
 }
-Heart.prototype = new Prop();
+Heart.prototype = Object.create(Prop.prototype);
+Heart.prototype.constructor = Heart;
 //星星
 var Star = function(){
     Prop.call(this);
@@ -220,7 +223,8 @@ var Star = function(){
     this.propType = 'Star';
     this.sprite = 'images/Star.png';
 }
-Star.prototype = new Prop();
+Star.prototype = Object.create(Prop.prototype);
+Star.prototype.constructor = Star;
 //钥匙
 var Key = function(){
     Prop.call(this);
@@ -228,7 +232,8 @@ var Key = function(){
     this.propType = 'Key';
     this.sprite = 'images/Key.png';
 }
-Key.prototype = new Prop();
+Key.prototype = Object.create(Prop.prototype);
+Key.prototype.constructor = Key;
 
 // 现在实例化你的所有对象
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
