@@ -2,7 +2,7 @@
 var Enemy = function() {
     // 要应用到每个敌人的实例的变量写在这里
     // 我们已经提供了一个来帮助你实现更多
-    this.x = Math.floor(Math.random()*505) - 400;
+    this.x = Math.floor(Math.random()*ctx.canvas.width) - 400;
     this.y = Math.ceil(Math.random()*3);
     this.isStop = false;
 
@@ -17,7 +17,7 @@ Enemy.prototype.update = function(dt) {
     // 都是以同样的速度运行的
     if(!this.isStop){
         this.x += Math.round(dt*100);
-        if(this.x > 505){
+        if(this.x > ctx.canvas.width){
             this.x = Math.floor(Math.random()*-300);
             this.y = Math.ceil(Math.random()*3);
         }
@@ -133,8 +133,9 @@ Player.prototype.checkProp = function(){
  */
 Player.prototype.Invincible = function(seconds){
     this.invincible = true;
+    var self = this;
     setTimeout(function() {
-        this.invincible = false;
+        self.invincible = false;
     }, seconds);
 }
 
